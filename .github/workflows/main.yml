@@ -1,0 +1,20 @@
+name: senai_automacao
+run-name: ${{ github.actor }} Pipeline Deploy 👍
+on:
+  push:
+    branches:
+      - "main"
+    paths-ignore:
+      - "docs/**"
+jobs:
+  githubactions-senai:
+    runs-on: ubuntu=latest
+    steps:
+      - name: Checkout
+        users: actions/checkout@v4
+      - name: INTALL PACKAGES
+        run:
+         sudo apt-get install figlet -y
+         curl https://static.snyk.io/cli/latest/snyk-linux -o snyk
+         chmod +x ./snyk
+         mv ./snyk /usr/local/bin/
